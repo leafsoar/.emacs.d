@@ -17,7 +17,7 @@
 ;; (setq org-log-done 'time)
 ;; (setq tab-always-indent nil)
 ;; (setq org-export-with-sub-superscripts nil)
-
+;; (setq default-fill-column 80)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 环境
@@ -32,6 +32,7 @@
       inhibit-startup-message t
       kill-ring-max 200
       scroll-margin 3
+	  scroll-step 1
       scroll-conservatively 10000
       visible-bell t)
 
@@ -43,7 +44,6 @@
 (setq-default make-backup-files nil)
 ;; C-x C-f 扩展
 (ido-mode t)
-
 ;; 扩展 path
 (setq exec-path (append exec-path '("/usr/local/bin/")))
 
@@ -60,6 +60,7 @@
 (display-time)
 ;; (setq display-time-24hr-format t)
 ;; (setq display-time-day-and-date t)
+;; (setq display-time-interval 10)
 ;; 显示行号
 (global-linum-mode t)
 
