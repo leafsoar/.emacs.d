@@ -8,10 +8,10 @@
 ;; 测试
 
 ;; (setq default-frame-alist
-;; 	  (append
-;; 	   '( (top . 100)
-;; 		  (left . 500))
-;; 	   default-frame-alist))
+;;	  (append
+;;	   '( (top . 100)
+;;		  (left . 500))
+;;	   default-frame-alist))
 ;; (auto-image-file-mode nil)
 ;; (global-font-lock-mode t)
 ;; (setq org-log-done 'time)
@@ -27,20 +27,20 @@
 ;; minibuffer
 (setq enable-recursive-minibuffers t)
 (setq backup-inhibited t
-      auto-save-default nil
-      column-number-mode t
-      inhibit-startup-message t
-      kill-ring-max 200
-      scroll-margin 3
+	  auto-save-default nil
+	  column-number-mode t
+	  inhibit-startup-message t
+	  kill-ring-max 200
+	  scroll-margin 3
 	  scroll-step 1
-      scroll-conservatively 10000
-      visible-bell t)
+	  scroll-conservatively 10000
+	  visible-bell t)
 
-;; 设定不产生备份文件 
-(setq make-backup-files nil) 
-;;自动保存模式  
-(setq auto-save-mode t) 
-;; 不生成临时文件  
+;; 设定不产生备份文件
+(setq make-backup-files nil)
+;;自动保存模式
+(setq auto-save-mode t)
+;; 不生成临时文件
 (setq-default make-backup-files nil)
 ;; C-x C-f 扩展
 (ido-mode t)
@@ -67,8 +67,8 @@
 ;; 设置宽度
 (setq default-tab-width 4)
 (setq tab-width 4
-      indent-tabs-mode t
-      c-basic-offset 4)
+	  indent-tabs-mode t
+	  c-basic-offset 4)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 操作
@@ -95,8 +95,8 @@
 
 ;; 简单的快速跳转
 (defun ska-point-to-register()
-  "Store cursorposition _fast_ in a register. 
-Use ska-jump-to-register to jump back to the stored 
+  "Store cursorposition _fast_ in a register.
+Use ska-jump-to-register to jump back to the stored
 position."
   (interactive)
   (setq zmacs-region-stays t)
@@ -107,8 +107,8 @@ that was stored with ska-point-to-register."
   (interactive)
   (setq zmacs-region-stays t)
   (let ((tmp (point-marker)))
-        (jump-to-register 8)
-        (set-register 8 tmp)))
+		(jump-to-register 8)
+		(set-register 8 tmp)))
 
 ;; 括号跳转
 (defun ls-match-paren (arg)
@@ -129,14 +129,14 @@ that was stored with ska-point-to-register."
   (interactive "*P")
   (comment-normalize-vars)
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
-      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
-    (comment-dwim arg)))
+	  (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+	(comment-dwim arg)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; org-mode
-(add-hook 'org-mode-hook 
+(add-hook 'org-mode-hook
 	  (function (lambda ()
-		      (local-unset-key (kbd "C-c SPC")))))
+			  (local-unset-key (kbd "C-c SPC")))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -145,9 +145,9 @@ that was stored with ska-point-to-register."
 ;; 插件源
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 						 ("tromey" . "tromey.com/elpa/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-;; (setq package-enable-at-startup nil) 
+						 ("marmalade" . "http://marmalade-repo.org/packages/")
+						 ("melpa" . "http://melpa.milkbox.net/packages/")))
+;; (setq package-enable-at-startup nil)
 (package-initialize)
 
 ;; (when (not package-archive-contents)
@@ -155,10 +155,10 @@ that was stored with ska-point-to-register."
 
 (defvar my-default-packages
   '(autopair
-    ace-jump-mode
-    powerline
-    undo-tree
-    sr-speedbar))
+	ace-jump-mode
+	powerline
+	undo-tree
+	sr-speedbar))
 
 (dolist (p my-default-packages)
   (when (not (package-installed-p p))
@@ -170,13 +170,14 @@ that was stored with ska-point-to-register."
 (undo-tree-mode t)
 ;; ace-jump-mode
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-;; sr-speedbar
-(setq sr-speedbar-max-width 40)
-(setq sr-speedbar-right-side nil)
-(global-set-key [f6] 'sr-speedbar-toggle)
-(global-set-key (kbd "C-<f6>") 'sr-speedbar-refresh-toggle)
-(global-set-key (kbd "M-<f6>") 'speedbar-up-directory)
-;; powerline (minibuffer 上方的条 窗口样式)
+
+;;;; sr-speedbar
+;; (setq sr-speedbar-max-width 40)
+;; (setq sr-speedbar-right-side nil)
+;; (global-set-key [f6] 'sr-speedbar-toggle)
+;; (global-set-key (kbd "C-<f6>") 'sr-speedbar-refresh-toggle)
+;; (global-set-key (kbd "M-<f6>") 'speedbar-up-directory)
+;;;; powerline (minibuffer 上方的条 窗口样式)
 ;; (powerline-center-theme)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -184,17 +185,17 @@ that was stored with ska-point-to-register."
 
 (require 'company)
 (dolist (hook (list
-               'emacs-lisp-mode-hook
-               'lisp-mode-hook
-               'lisp-interaction-mode-hook
+			   'emacs-lisp-mode-hook
+			   'lisp-mode-hook
+			   'lisp-interaction-mode-hook
 			   'lua-mode
-               'scheme-mode-hook
-               'c-mode-common-hook
-               'python-mode-hook
-               'haskell-mode-hook
-               'asm-mode-hook
-               'emms-tag-editor-mode-hook
-               'sh-mode-hook))
+			   'scheme-mode-hook
+			   'c-mode-common-hook
+			   'python-mode-hook
+			   'haskell-mode-hook
+			   'asm-mode-hook
+			   'emms-tag-editor-mode-hook
+			   'sh-mode-hook))
   (add-hook hook 'company-mode))
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -212,8 +213,8 @@ that was stored with ska-point-to-register."
 (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
 (add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
+						  (set (make-local-variable 'company-backends) '(company-go))
+						  (company-mode)))
 
 ;; (custom-set-faces
 ;;  '(company-preview
@@ -273,7 +274,7 @@ mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso1064
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("15f77c4d76205e1b23bebb971ba9d4b7298e53390d0fdc5aa6579f7e4c14181e" default)))
+	("15f77c4d76205e1b23bebb971ba9d4b7298e53390d0fdc5aa6579f7e4c14181e" default)))
  '(display-time-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
