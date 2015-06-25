@@ -1,0 +1,10 @@
+*.elc
+bookmarks
+*~
+session.*
+.DS_Store
+*#
+temp
+elpa
+eshell
+etags
