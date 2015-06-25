@@ -138,9 +138,6 @@ that was stored with ska-point-to-register."
 	  (function (lambda ()
 		      (local-unset-key (kbd "C-c SPC")))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; 其它
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 插件
@@ -182,8 +179,49 @@ that was stored with ska-point-to-register."
 ;; powerline (minibuffer 上方的条 窗口样式)
 ;; (powerline-center-theme)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; company
+
+(require 'company)
+(dolist (hook (list
+               'emacs-lisp-mode-hook
+               'lisp-mode-hook
+               'lisp-interaction-mode-hook
+			   'lua-mode
+               'scheme-mode-hook
+               'c-mode-common-hook
+               'python-mode-hook
+               'haskell-mode-hook
+               'asm-mode-hook
+               'emms-tag-editor-mode-hook
+               'sh-mode-hook))
+  (add-hook hook 'company-mode))
+(add-hook 'after-init-hook 'global-company-mode)
+
+(global-set-key (kbd "M-/") 'company-complete)
+
+(define-key company-active-map (kbd "\C-n") 'company-select-next)
+(define-key company-active-map (kbd "\C-p") 'company-select-previous)
+(define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
+;; (define-key company-active-map (kbd "\M-/") 'company-complete)
+
+;; (add-to-list 'company-backends 'company-dabbrev t)
+;; (add-to-list 'company-backends 'company-ispell t)
+;; (add-to-list 'company-backends 'company-files t)
+;; (add-to-list 'company-backends 'company-css t)
+;; (add-to-list 'company-backends 'company-nxml t)
+;; (add-to-list 'company-backends 'company-ropemacs t)
+;; (add-to-list 'company-backends 'company-yasnippet t)
+;; (add-to-list 'company-backends 'company-tern t)
+;; not always down case
+;; (setq company-dabbrev-downcase nil)
+
+(setq lua-indent-level 4)
+
 (message "leafsoar ~")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; 其它
 (when (window-system)
   (create-fontset-from-fontset-spec
    "-apple-bitstream vera sans mono-medium-r-normal--11-*-*-*-*-*-fontset-mymonaco,
