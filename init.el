@@ -4,6 +4,20 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 测试
+
+;; (setq default-frame-alist
+;; 	  (append
+;; 	   '( (top . 100)
+;; 		  (left . 500))
+;; 	   default-frame-alist))
+;; (auto-image-file-mode nil)
+;; (global-font-lock-mode t)
+;; (setq org-log-done 'time)
+;; (setq tab-always-indent nil)
+;; (setq org-export-with-sub-superscripts nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 外观
@@ -19,20 +33,11 @@
 ;; 显示行号
 (global-linum-mode t)
 
-;; (setq default-frame-alist
-;; 	  (append
-;; 	   '( (top . 100)
-;; 		  (left . 500))
-;; 	   default-frame-alist))
-;; (auto-image-file-mode nil)
-;; (global-font-lock-mode t)
-;; (setq org-log-done 'time)
-;; (setq tab-always-indent nil)
-;; (setq tab-width 4 indent-tabs-mode nil)
-;; (setq default-tab-width 4)
-;; (setq tab-width 4)
-;; (setq org-export-with-sub-superscripts nil)
-
+;; 设置宽度
+(setq default-tab-width 4)
+(setq tab-width 4
+      indent-tabs-mode t
+      c-basic-offset 4)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 环境
@@ -169,12 +174,13 @@ that was stored with ska-point-to-register."
 
 (message "leafsoar ~")
 
-(create-fontset-from-fontset-spec
-"-apple-bitstream vera sans mono-medium-r-normal--11-*-*-*-*-*-fontset-mymonaco,
+(when (window-system)
+  (create-fontset-from-fontset-spec
+   "-apple-bitstream vera sans mono-medium-r-normal--11-*-*-*-*-*-fontset-mymonaco,
 ascii:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
 chinese-gb2312:-apple-STHeiti-medium-normal-normal-11-*-*-*-*-p-0-iso10646-1,
 latin-iso8859-1:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
-mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1")
+mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
 
 (setq default-frame-alist (append '((font . "fontset-mymonaco")) default-frame-alist))
 (set-default-font "fontset-mymonaco")
