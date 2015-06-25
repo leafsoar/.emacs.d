@@ -19,6 +19,20 @@
 ;; 显示行号
 (global-linum-mode t)
 
+;; (setq default-frame-alist
+;; 	  (append
+;; 	   '( (top . 100)
+;; 		  (left . 500))
+;; 	   default-frame-alist))
+;; (auto-image-file-mode nil)
+;; (global-font-lock-mode t)
+;; (setq org-log-done 'time)
+;; (setq tab-always-indent nil)
+;; (setq tab-width 4 indent-tabs-mode nil)
+;; (setq default-tab-width 4)
+;; (setq tab-width 4)
+;; (setq org-export-with-sub-superscripts nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 环境
@@ -34,13 +48,14 @@
       scroll-conservatively 10000
       visible-bell t)
 
-
 ;; C-x C-f 扩展
 (ido-mode t)
 
+;; 扩展 path
+(setq exec-path (append exec-path '("/usr/local/bin/")))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 操作
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 快捷键
@@ -70,7 +85,7 @@ Use ska-jump-to-register to jump back to the stored
 position."
   (interactive)
   (setq zmacs-region-stays t)
-  (point-to-register 8))>
+  (point-to-register 8))
 (defun ska-jump-to-register()
   "Switches between current cursorposition and position
 that was stored with ska-point-to-register."
@@ -103,6 +118,12 @@ that was stored with ska-point-to-register."
     (comment-dwim arg)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; org-mode
+(add-hook 'org-mode-hook 
+	  (function (lambda ()
+		      (local-unset-key (kbd "C-c SPC")))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 其它
 
 
@@ -124,6 +145,7 @@ that was stored with ska-point-to-register."
   '(autopair
     ace-jump-mode
     powerline
+    undo-tree
     sr-speedbar))
 
 (dolist (p my-default-packages)
@@ -132,6 +154,8 @@ that was stored with ska-point-to-register."
 
 ;; autopair
 (autopair-global-mode t)
+;; undo-tree
+(undo-tree-mode t)
 ;; ace-jump-mode
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;; sr-speedbar
@@ -144,3 +168,38 @@ that was stored with ska-point-to-register."
 ;; (powerline-center-theme)
 
 (message "leafsoar ~")
+
+(create-fontset-from-fontset-spec
+"-apple-bitstream vera sans mono-medium-r-normal--11-*-*-*-*-*-fontset-mymonaco,
+ascii:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
+chinese-gb2312:-apple-STHeiti-medium-normal-normal-11-*-*-*-*-p-0-iso10646-1,
+latin-iso8859-1:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
+mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1")
+
+(setq default-frame-alist (append '((font . "fontset-mymonaco")) default-frame-alist))
+(set-default-font "fontset-mymonaco")
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes
+   (quote
+    ("15f77c4d76205e1b23bebb971ba9d4b7298e53390d0fdc5aa6579f7e4c14181e" default)))
+ '(display-time-mode t)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
