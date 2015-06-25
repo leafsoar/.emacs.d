@@ -20,28 +20,10 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 外观
-(when (window-system)
-  (tool-bar-mode 0)			;关闭 tool-bar
-  (scroll-bar-mode 0)			;关闭 scroll-bar
-  (message "windows-system"))
-
-;; 显示成对的括号
-(show-paren-mode t)
-;; 显示时间
-(display-time)
-;; 显示行号
-(global-linum-mode t)
-
-;; 设置宽度
-(setq default-tab-width 4)
-(setq tab-width 4
-      indent-tabs-mode t
-      c-basic-offset 4)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 环境
-
+(setq user-full-name "leafsoar")
+(setq user-mail-address "kltwjt@gmail.com")
+(fset 'yes-or-no-p 'y-or-n-p)
 ;; minibuffer
 (setq enable-recursive-minibuffers t)
 (setq backup-inhibited t
@@ -53,11 +35,39 @@
       scroll-conservatively 10000
       visible-bell t)
 
+;; 设定不产生备份文件 
+(setq make-backup-files nil) 
+;;自动保存模式  
+(setq auto-save-mode t) 
+;; 不生成临时文件  
+(setq-default make-backup-files nil)
 ;; C-x C-f 扩展
 (ido-mode t)
 
 ;; 扩展 path
 (setq exec-path (append exec-path '("/usr/local/bin/")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 外观
+(when (window-system)
+  (tool-bar-mode 0)			;关闭 tool-bar
+  (scroll-bar-mode 0)			;关闭 scroll-bar
+  (message "windows-system"))
+
+;; 显示成对的括号
+(show-paren-mode t)
+;; 显示时间
+(display-time)
+;; (setq display-time-24hr-format t)
+;; (setq display-time-day-and-date t)
+;; 显示行号
+(global-linum-mode t)
+
+;; 设置宽度
+(setq default-tab-width 4)
+(setq tab-width 4
+      indent-tabs-mode t
+      c-basic-offset 4)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 操作
@@ -71,11 +81,10 @@
 (global-set-key (kbd "M-C-z") 'undo)
 (global-set-key (kbd "M-4") 'ls-kill-current-buffer)
 
-
+(global-set-key [(meta g)] 'goto-line)
 (global-set-key (kbd "C-=") 'set-mark-command)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-M-o") 'other-window)
-(fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key "%" 'ls-match-paren)
 (global-set-key (kbd "C-; ") 'ls-comment-dwim-line)
