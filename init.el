@@ -88,7 +88,7 @@
 (global-set-key (kbd "C-M-o") 'other-window)
 
 (global-set-key "%" 'ls-match-paren)
-(global-set-key (kbd "C-; ") 'ls-comment-dwim-line)
+(global-set-key (kbd "C-;") 'ls-comment-dwim-line)
 
 (global-set-key [(control ?\.)] 'ska-point-to-register)
 (global-set-key [(control ?\,)] 'ska-jump-to-register)
@@ -134,6 +134,15 @@ that was stored with ska-point-to-register."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; org-mode
+;; org-mode config
+
+(setq org-hide-leading-stars t)
+;; (setq org-agenda-files (list "~/.leaf.org"))
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-remember)
+(setq org-log-done 'time)
+(setq org-export-with-sub-superscripts nil)
+
 (add-hook 'org-mode-hook
 	  (function (lambda ()
 			  (local-unset-key (kbd "C-c SPC")))))
@@ -144,7 +153,6 @@ that was stored with ska-point-to-register."
 
 ;; 插件源
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-						 ("tromey" . "tromey.com/elpa/")
 						 ("marmalade" . "http://marmalade-repo.org/packages/")
 						 ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;; (setq package-enable-at-startup nil)
@@ -156,9 +164,7 @@ that was stored with ska-point-to-register."
 (defvar my-default-packages
   '(autopair
 	ace-jump-mode
-	powerline
-	undo-tree
-	sr-speedbar))
+	undo-tree))
 
 (dolist (p my-default-packages)
   (when (not (package-installed-p p))
@@ -170,6 +176,9 @@ that was stored with ska-point-to-register."
 (undo-tree-mode t)
 ;; ace-jump-mode
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; highlight
+(add-hook 'prog-mode-hook 'highlight-numbers-mode)
+(add-hook 'prog-mode-hook 'hl-todo-mode)
 
 ;;;; sr-speedbar
 ;; (setq sr-speedbar-max-width 40)
@@ -188,7 +197,7 @@ that was stored with ska-point-to-register."
 			   'emacs-lisp-mode-hook
 			   'lisp-mode-hook
 			   'lisp-interaction-mode-hook
-			   'lua-mode
+			   'lua-mode-hook
 			   'scheme-mode-hook
 			   'c-mode-common-hook
 			   'python-mode-hook
@@ -200,21 +209,32 @@ that was stored with ska-point-to-register."
 (add-hook 'after-init-hook 'global-company-mode)
 
 (global-set-key (kbd "M-/") 'company-complete)
-
 (define-key company-active-map (kbd "\C-n") 'company-select-next)
 (define-key company-active-map (kbd "\C-p") 'company-select-previous)
 (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
-;; (define-key company-active-map (kbd "\M-/") 'company-complete)
 
-(require 'company-go)
 (setq company-tooltip-limit 20)                      ; bigger popup window
 (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
 (setq company-echo-delay 0)                          ; remove annoying blinking
 (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
-(add-hook 'go-mode-hook (lambda ()
-						  (set (make-local-variable 'company-backends) '(company-go))
-						  (company-mode)))
+;; golang 配置
+(require 'company-go)
+(add-hook 'go-mode-hook
+		  (lambda ()
+			(set (make-local-variable 'company-backends) '(company-go))))
+
+(require 'company-files)
+(setq company-backends '((company-capf company-dabbrev-code company-files)))
+
+;; lua 配置
+;; (require 'etags)
+;; (require 'company-etags)
+;; (add-hook 'lua-mode-hook
+		  ;; (lambda ()
+			;; (set (make-local-variable 'company-backends) '(company-etags))))
+;; (setq tags-file-name "/Users/leafsoar/Cocos/cocos2d-x-3.6/TAGS")
+
 
 ;; (custom-set-faces
 ;;  '(company-preview
@@ -240,10 +260,14 @@ that was stored with ska-point-to-register."
 ;; (add-to-list 'company-backends 'company-ropemacs t)
 ;; (add-to-list 'company-backends 'company-yasnippet t)
 ;; (add-to-list 'company-backends 'company-tern t)
+
 ;; not always down case
 ;; (setq company-dabbrev-downcase nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; 程序相关
 (setq lua-indent-level 4)
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 (message "leafsoar ~")
 
@@ -266,7 +290,7 @@ mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso1064
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
+   '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
