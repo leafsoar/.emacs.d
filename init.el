@@ -7,11 +7,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 测试
 
-;; (setq default-frame-alist
-;;	  (append
-;;	   '( (top . 100)
-;;		  (left . 500))
-;;	   default-frame-alist))
 ;; (auto-image-file-mode nil)
 ;; (global-font-lock-mode t)
 ;; (setq org-log-done 'time)
@@ -44,25 +39,28 @@
 (setq-default make-backup-files nil)
 ;; C-x C-f 扩展
 (ido-mode t)
+(setq tab-always-indent nil)
 ;; 扩展 path
-(setq exec-path (append exec-path '("/usr/local/bin/")))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 外观
-(when (window-system)
-  (tool-bar-mode 0)			;关闭 tool-bar
-  (scroll-bar-mode 0)			;关闭 scroll-bar
-  (message "windows-system"))
-
+;; (setq exec-path (append exec-path '("/usr/local/bin/")))
+(setq ido-enable-flex-matching t)
 ;; 显示成对的括号
 (show-paren-mode t)
 ;; 显示时间
-(display-time)
+;; (display-time)
 ;; (setq display-time-24hr-format t)
 ;; (setq display-time-day-and-date t)
 ;; (setq display-time-interval 10)
-;; 显示行号
-(global-linum-mode t)
+
+(when (window-system)
+  (global-linum-mode t)
+  )
+
+(setq default-frame-alist
+	  (append
+	   '((top . 200)
+		 (left . 450)
+		 (width . 86))
+	   default-frame-alist))
 
 ;; 设置宽度
 (setq default-tab-width 4)
@@ -224,6 +222,10 @@ that was stored with ska-point-to-register."
 		  (lambda ()
 			(set (make-local-variable 'company-backends) '(company-go))))
 
+(add-hook 'lua-mode-hook
+		  (lambda ()
+			(set (make-local-variable 'company-backends) '(company-dabbrev-code))))
+
 (require 'company-files)
 (setq company-backends '((company-capf company-dabbrev-code company-files)))
 
@@ -235,34 +237,16 @@ that was stored with ska-point-to-register."
 			;; (set (make-local-variable 'company-backends) '(company-etags))))
 ;; (setq tags-file-name "/Users/leafsoar/Cocos/cocos2d-x-3.6/TAGS")
 
-
-;; (custom-set-faces
-;;  '(company-preview
-;;    ((t (:foreground "darkgray" :underline t))))
-;;  '(company-preview-common
-;;    ((t (:inherit company-preview))))
-;;  '(company-tooltip
-;;    ((t (:background "lightgray" :foreground "black"))))
-;;  '(company-tooltip-selection
-;;    ((t (:background "steelblue" :foreground "white"))))
-;;  '(company-tooltip-common
-;;    ((((type x)) (:inherit company-tooltip :weight bold))
-;;     (t (:inherit company-tooltip))))
-;;  '(company-tooltip-common-selection
-;;    ((((type x)) (:inherit company-tooltip-selection :weight bold))
-;;     (t (:inherit company-tooltip-selection)))))
-
-;; (add-to-list 'company-backends 'company-dabbrev t)
-;; (add-to-list 'company-backends 'company-ispell t)
 ;; (add-to-list 'company-backends 'company-files t)
-;; (add-to-list 'company-backends 'company-css t)
-;; (add-to-list 'company-backends 'company-nxml t)
-;; (add-to-list 'company-backends 'company-ropemacs t)
-;; (add-to-list 'company-backends 'company-yasnippet t)
-;; (add-to-list 'company-backends 'company-tern t)
-
 ;; not always down case
 ;; (setq company-dabbrev-downcase nil)
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; projectile
+(add-hook 'lua-mode-hook 'projectile-global-mode)
+(setq projectile-enable-caching t)
+(define-key global-map (kbd "M-p r") 'projectile-find-file)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 程序相关
@@ -301,6 +285,7 @@ mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso1064
 	("15f77c4d76205e1b23bebb971ba9d4b7298e53390d0fdc5aa6579f7e4c14181e" default)))
  '(display-time-mode t)
  '(show-paren-mode t)
+ '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
