@@ -177,13 +177,19 @@ that was stored with ska-point-to-register."
 ;; highlight
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-todo-mode)
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
-;;;; sr-speedbar
-;; (setq sr-speedbar-max-width 40)
-;; (setq sr-speedbar-right-side nil)
+;; sr-speedbar
+(setq sr-speedbar-max-width 40)
+(setq sr-speedbar-right-side nil)
+(add-hook 'speedbar-mode-hook 'sr-speedbar-refresh-turn-off)
+(setq speedbar-use-images nil)
+(setq speedbar-show-unknown-files t)
+
 ;; (global-set-key [f6] 'sr-speedbar-toggle)
 ;; (global-set-key (kbd "C-<f6>") 'sr-speedbar-refresh-toggle)
 ;; (global-set-key (kbd "M-<f6>") 'speedbar-up-directory)
+
 ;;;; powerline (minibuffer 上方的条 窗口样式)
 ;; (powerline-center-theme)
 
