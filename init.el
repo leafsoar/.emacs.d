@@ -71,11 +71,14 @@
 ;;;; 快捷键
 
 ;; 窗口相关
-(global-set-key (kbd "M-0") 'other-window)
-(global-set-key (kbd "M-1") 'delete-other-windows)
+;; (global-set-key (kbd "M-1") 'delete-other-windows)
+;; (global-set-key (kbd "M-4") 'ls-kill-current-buffer)
+;; (global-set-key (kbd "M-5") 'delete-window)
+;; (global-set-key (kbd "C-M-0") 'delete-other-windows)
+(global-set-key (kbd "C--") 'delete-window)
+(global-set-key (kbd "C-=") 'ls-kill-current-buffer)
+
 (global-set-key (kbd "M-C-z") 'undo)
-(global-set-key (kbd "M-4") 'ls-kill-current-buffer)
-(global-set-key (kbd "M-5") 'delete-window)
 
 (global-set-key [(meta g)] 'goto-line)
 (global-set-key (kbd "C-=") 'set-mark-command)
@@ -113,11 +116,6 @@ that was stored with ska-point-to-register."
 	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
 	(t (self-insert-command (or arg 1)))))
 
-;; 关闭 buffer
-(defun ls-kill-current-buffer()
-  (interactive)
-  (kill-buffer (current-buffer)))
-
 ;; 代码注释
 (defun ls-comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command."
@@ -126,6 +124,10 @@ that was stored with ska-point-to-register."
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
 	  (comment-or-uncomment-region (line-beginning-position) (line-end-position))
 	(comment-dwim arg)))
+
+(defun ls-kill-current-buffer()
+  (interactive)
+  (kill-buffer (current-buffer)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; org-mode
