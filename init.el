@@ -7,12 +7,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 测试
 
-;; (auto-image-file-mode nil)
-;; (global-font-lock-mode t)
-;; (setq org-log-done 'time)
-;; (setq tab-always-indent nil)
-;; (setq org-export-with-sub-superscripts nil)
-;; (setq default-fill-column 80)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 环境
@@ -41,8 +36,9 @@
 (ido-mode t)
 (setq tab-always-indent nil)
 ;; 扩展 path
-;; (setq exec-path (append exec-path '("/usr/local/bin/")))
+(setq exec-path (append exec-path '("/usr/local/bin/")))
 (setq ido-enable-flex-matching t)
+
 ;; 显示成对的括号
 (show-paren-mode t)
 ;; 显示时间
@@ -179,9 +175,12 @@ that was stored with ska-point-to-register."
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-todo-mode)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; magit
+
 
 ;; sr-speedbar
 (setq sr-speedbar-max-width 40)
@@ -261,7 +260,11 @@ that was stored with ska-point-to-register."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 程序相关
 (setq lua-indent-level 4)
-(add-hook 'before-save-hook 'gofmt-before-save)
+
+(add-hook 'go-mode-hook
+		  (lambda ()
+			(add-hook 'before-save-hook 'gofmt-before-save)))
+(add-hook 'prog-mode-hook 'global-auto-revert-mode t)
 
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (define-key global-map (kbd "C-c s") 'hs-show-block)
