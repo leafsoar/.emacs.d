@@ -41,6 +41,19 @@
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 (add-hook 'prog-mode-hook 'fci-mode)
 
+;; company-mode 与  fci-mode 冲突解决
+(defvar-local company-fci-mode-on-p nil)
+(defun company-turn-off-fci (&rest ignore)
+  (when (boundp 'fci-mode)
+    (setq company-fci-mode-on-p fci-mode)
+    (when fci-mode (fci-mode -1))))
+(defun company-maybe-turn-on-fci (&rest ignore)
+  (when company-fci-mode-on-p (fci-mode 1)))
+(add-hook 'company-completion-started-hook 'company-turn-off-fci)
+(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
+(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+
+
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
