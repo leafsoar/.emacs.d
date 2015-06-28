@@ -74,6 +74,7 @@
 (require 'ls-packages)
 (require 'ls-code)
 
+(winner-mode t)
 
 ;; dired 定时自动关闭
 (defun delete-buffer-after-timeout (buffer sec)

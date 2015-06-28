@@ -14,12 +14,12 @@
 (global-set-key "%" 'ls-match-paren)
 
 ;; 窗口相关
-(global-set-key (kbd "C-9") 'ls-kill-current-buffer)
-(global-set-key (kbd "C-7") 'delete-window)
-(global-set-key (kbd "C--") 'delete-other-windows)
 (global-set-key (kbd "C-M-o") 'other-window)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x 4") 'delete-window)
 
+(global-set-key (kbd "C-8") 'ls-kill-current-buffer)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; 快速跳转
 (global-set-key [(control ?\.)] 'ska-point-to-register)
 (global-set-key [(control ?\,)] 'ska-jump-to-register)

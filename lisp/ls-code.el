@@ -59,6 +59,9 @@
 ;; (setq company-dabbrev-downcase nil)
 ;; (add-hook 'after-init-hook 'global-company-mode)
 
+;; (add-hook 'lua-mode-hook 'imenu-list)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; projectile
 (add-hook 'lua-mode-hook 'projectile-global-mode)

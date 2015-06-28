@@ -29,6 +29,8 @@
 ;;   (when (not (package-installed-p p))
 ;; 	(package-install p)))
 
+(require 'dired+)
+
 (autopair-global-mode)
 (undo-tree-mode)
 (projectile-global-mode)
