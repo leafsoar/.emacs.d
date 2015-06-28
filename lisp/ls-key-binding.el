@@ -17,11 +17,12 @@
 (global-set-key (kbd "C-M-o") 'other-window)
 (global-set-key (kbd "C--") 'delete-other-windows)
 (global-set-key (kbd "C-8") 'ls-kill-current-buffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; hlem
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-p r") 'projectile-find-file)
+(global-set-key (kbd "M-p r") 'helm-projectile-find-file)
 (global-set-key (kbd "M-p m") 'helm-semantic-or-imenu)
 (global-set-key (kbd "M-X") 'smex)
 (global-set-key (kbd "M-x") 'helm-M-x)
