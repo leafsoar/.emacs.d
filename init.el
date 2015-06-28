@@ -62,16 +62,14 @@
 (setq-default save-place t)
 (require 'saveplace)
 
-;; C-x C-f 扩展
-(ido-mode t)
 ;; 扩展 path
 (setq exec-path (append exec-path '("/usr/local/bin/")))
-(setq ido-enable-flex-matching t)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+(require 'ls-packages)
 (require 'ls-key-binding)
 (require 'ls-org-mode)
-(require 'ls-packages)
 (require 'ls-code)
 
 (winner-mode t)

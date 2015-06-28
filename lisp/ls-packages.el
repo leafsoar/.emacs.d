@@ -36,13 +36,12 @@
 (projectile-global-mode)
 (window-numbering-mode)
 
-;; ace-jump-mode
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;; highlight
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-todo-mode)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 (add-hook 'prog-mode-hook 'fci-mode)
+(add-hook 'prog-mode-hook 'helm-projectile-on)
 
 ;; company-mode 与  fci-mode 冲突解决
 (defvar-local company-fci-mode-on-p nil)
@@ -55,13 +54,6 @@
 (add-hook 'company-completion-started-hook 'company-turn-off-fci)
 (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
-
-
-;; smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; magit
-
 
 ;; sr-speedbar
 (setq sr-speedbar-max-width 40)

@@ -66,7 +66,6 @@
 ;;;; projectile
 (add-hook 'lua-mode-hook 'projectile-global-mode)
 (setq projectile-enable-caching t)
-(define-key global-map (kbd "M-p r") 'projectile-find-file)
 
 ;; ;; scroll 设置
 ;; (global-set-key [wheel-left] 'scroll-right-1)                                   

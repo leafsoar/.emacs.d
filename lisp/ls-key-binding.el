@@ -15,11 +15,19 @@
 
 ;; 窗口相关
 (global-set-key (kbd "C-M-o") 'other-window)
-(global-set-key (kbd "C-x 4") 'delete-window)
-
+(global-set-key (kbd "C--") 'delete-other-windows)
 (global-set-key (kbd "C-8") 'ls-kill-current-buffer)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; hlem
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-p r") 'projectile-find-file)
+(global-set-key (kbd "M-p m") 'helm-semantic-or-imenu)
+(global-set-key (kbd "M-X") 'smex)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+
 ;; 快速跳转
 (global-set-key [(control ?\.)] 'ska-point-to-register)
 (global-set-key [(control ?\,)] 'ska-jump-to-register)
