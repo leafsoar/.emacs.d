@@ -26,6 +26,9 @@
 	  scroll-conservatively 10000
 	  visible-bell t)
 
+;; 自动保存文件光标位置
+(setq-default save-place t)
+(require 'saveplace)
 ;; 设定不产生备份文件
 (setq make-backup-files nil)
 ;;自动保存模式
@@ -75,8 +78,8 @@
 ;; (global-set-key (kbd "M-4") 'ls-kill-current-buffer)
 ;; (global-set-key (kbd "M-5") 'delete-window)
 ;; (global-set-key (kbd "C-M-0") 'delete-other-windows)
-(global-set-key (kbd "C--") 'delete-window)
-(global-set-key (kbd "C-=") 'ls-kill-current-buffer)
+(global-set-key (kbd "C-0") 'delete-window)
+(global-set-key (kbd "C--") 'ls-kill-current-buffer)
 
 (global-set-key (kbd "M-C-z") 'undo)
 
