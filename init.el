@@ -6,21 +6,36 @@
 ;; |_.__/ \__,_|___/\___|
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;; 环境
+(setq user-full-name "leafsoar")
+(setq user-mail-address "kltwjt@gmail.com")
+
 ;; 编辑 init.el 文件
 (defun ls-edit()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-;;;; 环境
-(setq user-full-name "leafsoar")
-(setq user-mail-address "kltwjt@gmail.com")
+(setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;;自动保存模式
+;; (setq auto-save-mode t)
+;; 不生成临时文件
+;; (setq-default make-backup-files nil)
+
+;; 备份策略
+(setq make-backup-files t)
+(setq kept-old-versions 3)
+(setq kept-new-versions 3)
+(setq delete-old-versions t)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+
+
 ;; minibuffer
 (setq enable-recursive-minibuffers t)
 (setq backup-inhibited t
 	  auto-save-default nil
 	  column-number-mode t
-	  inhibit-startup-message t
 	  kill-ring-max 200
 	  scroll-margin 3
 	  scroll-step 1
@@ -30,12 +45,7 @@
 ;; 自动保存文件光标位置
 (setq-default save-place t)
 (require 'saveplace)
-;; 设定不产生备份文件
-(setq make-backup-files nil)
-;;自动保存模式
-(setq auto-save-mode t)
-;; 不生成临时文件
-(setq-default make-backup-files nil)
+
 ;; C-x C-f 扩展
 (ido-mode t)
 (setq tab-always-indent nil)
@@ -47,15 +57,13 @@
 
 ;; 显示成对的括号
 (show-paren-mode t)
-;; 显示时间
-;; (display-time)
-;; (setq display-time-24hr-format t)
-;; (setq display-time-day-and-date t)
-;; (setq display-time-interval 10)
 
+(menu-bar-mode 0)
 (when (window-system)
   (global-linum-mode t)
-  )
+  (tool-bar-mode 0)
+  (menu-bar-mode t)
+  (scroll-bar-mode 0))
 
 (setq default-frame-alist
 	  (append
