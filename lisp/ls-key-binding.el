@@ -61,3 +61,5 @@ that was stored with ska-point-to-register."
 (defun ls-kill-current-buffer()
   (interactive)
   (kill-buffer (current-buffer)))
+
+(provide 'ls-key-binding)

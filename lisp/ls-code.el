@@ -105,3 +105,5 @@
 (define-key global-map (kbd "C-c h") 'hs-hide-block)
 (define-key global-map (kbd "C-c S") 'hs-show-all)
 (define-key global-map (kbd "C-c H") 'hs-hide-all)
+
+(provide 'ls-code)

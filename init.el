@@ -68,10 +68,11 @@
 (setq exec-path (append exec-path '("/usr/local/bin/")))
 (setq ido-enable-flex-matching t)
 
-(load "~/.emacs.d/ls-key-binding.el")
-(load "~/.emacs.d/ls-org-mode.el")
-(load "~/.emacs.d/ls-packages.el")
-(load "~/.emacs.d/ls-code.el")
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'ls-key-binding)
+(require 'ls-org-mode)
+(require 'ls-packages)
+(require 'ls-code)
 
 (message "leafsoar ~")
 

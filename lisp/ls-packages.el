@@ -60,3 +60,4 @@
 ;; (powerline-center-theme)
 
 
+(provide 'ls-packages)

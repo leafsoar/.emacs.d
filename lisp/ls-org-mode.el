@@ -16,3 +16,5 @@
 (add-hook 'org-mode-hook
 	  (function (lambda ()
 			  (local-unset-key (kbd "C-c SPC")))))
+
+(provide 'ls-org-mode)
