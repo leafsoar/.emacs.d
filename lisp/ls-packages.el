@@ -21,16 +21,17 @@
 (defvar my-default-packages
   '(autopair
 	ace-jump-mode
+	projectile
+	yasnippet
 	undo-tree))
 
-(dolist (p my-default-packages)
-  (when (not (package-installed-p p))
-	(package-install p)))
+;; (dolist (p my-default-packages)
+;;   (when (not (package-installed-p p))
+;; 	(package-install p)))
 
-;; autopair
 (autopair-global-mode)
-;; undo-tree
 (undo-tree-mode)
+(projectile-global-mode)
 
 ;; ace-jump-mode
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -38,6 +39,7 @@
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 (add-hook 'prog-mode-hook 'hl-todo-mode)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+(add-hook 'prog-mode-hook 'fci-mode)
 
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
