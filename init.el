@@ -19,41 +19,34 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;自动保存模式
-;; (setq auto-save-mode t)
-;; 不生成临时文件
-;; (setq-default make-backup-files nil)
+(setq auto-save-mode t
+	  make-backup-files t
+	  kept-old-versions 3
+	  kept-new-versions 3
+	  delete-old-versions t
+	  backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
-;; 备份策略
-(setq make-backup-files t)
-(setq kept-old-versions 3)
-(setq kept-new-versions 3)
-(setq delete-old-versions t)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
-
-
-;; minibuffer
+;; 窗口相关
 (setq enable-recursive-minibuffers t)
-(setq backup-inhibited t
-	  auto-save-default nil
-	  column-number-mode t
+(setq column-number-mode t
 	  kill-ring-max 200
 	  scroll-margin 3
 	  scroll-step 1
 	  scroll-conservatively 10000
 	  visible-bell t)
-
-;; 自动保存文件光标位置
-(setq-default save-place t)
-(require 'saveplace)
-
-;; C-x C-f 扩展
-(ido-mode t)
-(setq tab-always-indent nil)
-;; 扩展 path
-(setq exec-path (append exec-path '("/usr/local/bin/")))
-(setq ido-enable-flex-matching t)
-;; 平滑滚动
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq default-frame-alist
+	  (append
+	   '((top . 200)
+		 (left . 450)
+		 (width . 86))
+	   default-frame-alist))
+(setq tab-always-indent nil)
+;; 设置宽度
+(setq default-tab-width 4)
+(setq tab-width 4
+	  indent-tabs-mode t
+	  c-basic-offset 4)
 
 ;; 显示成对的括号
 (show-paren-mode t)
@@ -65,18 +58,16 @@
   (menu-bar-mode t)
   (scroll-bar-mode 0))
 
-(setq default-frame-alist
-	  (append
-	   '((top . 200)
-		 (left . 450)
-		 (width . 86))
-	   default-frame-alist))
+;; 自动保存文件光标位置
+(setq-default save-place t)
+(require 'saveplace)
 
-;; 设置宽度
-(setq default-tab-width 4)
-(setq tab-width 4
-	  indent-tabs-mode t
-	  c-basic-offset 4)
+;; C-x C-f 扩展
+(ido-mode t)
+;; 扩展 path
+(setq exec-path (append exec-path '("/usr/local/bin/")))
+(setq ido-enable-flex-matching t)
+
 
 (load "~/.emacs.d/ls-key-binding.el")
 (load "~/.emacs.d/ls-org-mode.el")
