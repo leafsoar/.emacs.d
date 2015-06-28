@@ -7,26 +7,20 @@
 ;;           |___/                               |___/
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;; 快捷键
-;; 窗口相关
-;; (global-set-key (kbd "M-1") 'delete-other-windows)
-;; (global-set-key (kbd "M-4") 'ls-kill-current-buffer)
-;; (global-set-key (kbd "M-5") 'delete-window)
-;; (global-set-key (kbd "C-M-0") 'delete-other-windows)
-(global-set-key (kbd "C-0") 'ls-kill-current-buffer)
-(global-set-key (kbd "C-9") 'delete-window)
-(global-set-key (kbd "C--") 'delete-other-windows)
-
-(global-set-key (kbd "M-C-z") 'undo)
-
-(global-set-key [(meta g)] 'goto-line)
-(global-set-key (kbd "C-=") 'set-mark-command)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-M-o") 'other-window)
-
-(global-set-key "%" 'ls-match-paren)
+;; 常用设置
 (global-set-key (kbd "C-;") 'ls-comment-dwim-line)
+(global-set-key (kbd "C-=") 'set-mark-command)
+(global-set-key [(meta g)] 'goto-line)
+(global-set-key "%" 'ls-match-paren)
 
+;; 窗口相关
+(global-set-key (kbd "C-9") 'ls-kill-current-buffer)
+(global-set-key (kbd "C-7") 'delete-window)
+(global-set-key (kbd "C--") 'delete-other-windows)
+(global-set-key (kbd "C-M-o") 'other-window)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; 快速跳转
 (global-set-key [(control ?\.)] 'ska-point-to-register)
 (global-set-key [(control ?\,)] 'ska-jump-to-register)
 
