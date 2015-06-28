@@ -26,7 +26,14 @@
 	  delete-old-versions t
 	  backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
-;; 窗口相关
+;; 窗口样式
+(menu-bar-mode 0)
+(when (window-system)
+  (global-linum-mode)
+  (menu-bar-mode)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0))
+
 (setq enable-recursive-minibuffers t)
 (setq column-number-mode t
 	  kill-ring-max 200
@@ -49,14 +56,7 @@
 	  c-basic-offset 4)
 
 ;; 显示成对的括号
-(show-paren-mode t)
-
-(menu-bar-mode 0)
-(when (window-system)
-  (global-linum-mode t)
-  (tool-bar-mode 0)
-  (menu-bar-mode t)
-  (scroll-bar-mode 0))
+(show-paren-mode)
 
 ;; 自动保存文件光标位置
 (setq-default save-place t)
@@ -67,7 +67,6 @@
 ;; 扩展 path
 (setq exec-path (append exec-path '("/usr/local/bin/")))
 (setq ido-enable-flex-matching t)
-
 
 (load "~/.emacs.d/ls-key-binding.el")
 (load "~/.emacs.d/ls-org-mode.el")
