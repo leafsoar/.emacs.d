@@ -41,6 +41,8 @@
 ;; 扩展 path
 (setq exec-path (append exec-path '("/usr/local/bin/")))
 (setq ido-enable-flex-matching t)
+;; 平滑滚动
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; 显示成对的括号
 (show-paren-mode t)
@@ -78,8 +80,9 @@
 ;; (global-set-key (kbd "M-4") 'ls-kill-current-buffer)
 ;; (global-set-key (kbd "M-5") 'delete-window)
 ;; (global-set-key (kbd "C-M-0") 'delete-other-windows)
-(global-set-key (kbd "C-0") 'delete-window)
-(global-set-key (kbd "C--") 'ls-kill-current-buffer)
+(global-set-key (kbd "C-0") 'ls-kill-current-buffer)
+(global-set-key (kbd "C-9") 'delete-window)
+(global-set-key (kbd "C--") 'delete-other-windows)
 
 (global-set-key (kbd "M-C-z") 'undo)
 
@@ -261,6 +264,32 @@ that was stored with ska-point-to-register."
 (add-hook 'lua-mode-hook 'projectile-global-mode)
 (setq projectile-enable-caching t)
 (define-key global-map (kbd "M-p r") 'projectile-find-file)
+
+;; ;; scroll 设置
+;; (global-set-key [wheel-left] 'scroll-right-1)                                   
+;; (global-set-key [wheel-right] 'scroll-left-1)
+;; (global-set-key [wheel-down] 'scroll-up-1)
+;; (global-set-key [wheel-up] 'scroll-down-1)
+;; (global-set-key [double-wheel-down] 'scroll-down-double)
+;; (global-set-key [double-wheel-up] 'scroll-up-double)
+;; (global-set-key [triple-wheel-down] 'scroll-down-triple)
+;; (global-set-key [triple-wheel-up] 'scroll-up-triple)
+;; (defun scroll-down-double()
+;;   (interactive)
+;;   (scroll-up 5))
+;; (defun scroll-up-double()
+;;   (interactive)
+;;   (scroll-down 5))
+;; (defun scroll-down-triple()
+;;   (interactive)
+;;   (scroll-up 20))
+;; (defun scroll-up-triple()
+;;   (interactive)
+;;   (scroll-down 20))
+;; (require 'smooth-scroll)
+;; (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+;; (smooth-scroll-mode t)
+;; ;; (toggle-truncate-lines)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 程序相关
