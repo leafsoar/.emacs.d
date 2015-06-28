@@ -24,10 +24,13 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-p r") 'helm-projectile-find-file)
 (global-set-key (kbd "M-p m") 'helm-semantic-or-imenu)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-s") 'helm-occur)
 (global-set-key (kbd "M-X") 'smex)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+(setq helm-M-x-fuzzy-match t)
 
 ;; 快速跳转
 (global-set-key [(control ?\.)] 'ska-point-to-register)
