@@ -74,6 +74,25 @@
 (require 'ls-packages)
 (require 'ls-code)
 
+
+;; dired 定时自动关闭
+(defun delete-buffer-after-timeout (buffer sec)
+  "delete the buffer after given seconds."
+  (interactive)
+  (run-at-time sec nil
+               (lambda (buf)
+                 (unless (equal buf (current-buffer))
+                   (message "killed #<buffer %s> automatically." (buffer-name buf))
+                   (kill-buffer buf))) buffer))
+(define-key dired-mode-map (kbd "^")
+  (lambda () (interactive)
+    (delete-buffer-after-timeout (current-buffer) 5)
+    (find-file "..")))
+(define-key dired-mode-map (kbd "q")
+  (lambda () (interactive)
+    (delete-buffer-after-timeout (current-buffer) 5)
+    (quit-window)))
+
 (message "leafsoar ~")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

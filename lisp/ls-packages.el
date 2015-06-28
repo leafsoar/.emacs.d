@@ -32,6 +32,7 @@
 (autopair-global-mode)
 (undo-tree-mode)
 (projectile-global-mode)
+(window-numbering-mode)
 
 ;; ace-jump-mode
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
