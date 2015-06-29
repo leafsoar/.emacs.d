@@ -57,6 +57,7 @@
 
 ;; 显示成对的括号
 (show-paren-mode)
+(setq-default line-spacing 1)
 
 ;; 自动保存文件光标位置
 (setq-default save-place t)
@@ -96,12 +97,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; 其它
+;; (when (window-system)
+;;   (create-fontset-from-fontset-spec
+;;    "-apple-bitstream vera sans mono-medium-r-normal--11-*-*-*-*-*-fontset-mymonaco,
+;; ascii:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
+;; chinese-gb2312:-apple-STHeiti-medium-normal-normal-11-*-*-*-*-p-0-iso10646-1,
+;; latin-iso8859-1:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
+;; mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
+;; (setq default-frame-alist (append '((font . "fontset-mymonaco")) default-frame-alist))
+
 (when (window-system)
   (create-fontset-from-fontset-spec
    "-apple-bitstream vera sans mono-medium-r-normal--11-*-*-*-*-*-fontset-mymonaco,
-ascii:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
+ascii:-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
 chinese-gb2312:-apple-STHeiti-medium-normal-normal-11-*-*-*-*-p-0-iso10646-1,
-latin-iso8859-1:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
-mule-unicode-0100-24ff:-apple-Monaco-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
+latin-iso8859-1:-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
+mule-unicode-0100-24ff:-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
 (setq default-frame-alist (append '((font . "fontset-mymonaco")) default-frame-alist))
-(set-default-font "fontset-mymonaco")
