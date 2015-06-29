@@ -50,10 +50,10 @@
 	   default-frame-alist))
 (setq tab-always-indent nil)
 ;; 设置宽度
-(setq default-tab-width 4)
+(setq tab-width 4)
 (setq tab-width 4
-	  indent-tabs-mode t
-	  c-basic-offset 4)
+	  indent-tabs-mode t)
+	  ;; c-basic-offset 4)
 
 ;; 显示成对的括号
 (show-paren-mode)
@@ -114,3 +114,6 @@ chinese-gb2312:-apple-STHeiti-medium-normal-normal-11-*-*-*-*-p-0-iso10646-1,
 latin-iso8859-1:-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1,
 mule-unicode-0100-24ff:-apple-Menlo-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
 (setq default-frame-alist (append '((font . "fontset-mymonaco")) default-frame-alist))
+
+(provide 'init)
+

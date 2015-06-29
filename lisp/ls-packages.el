@@ -42,6 +42,7 @@
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 (add-hook 'prog-mode-hook 'fci-mode)
 (add-hook 'prog-mode-hook 'helm-projectile-on)
+(add-hook 'prog-mode-hook 'flycheck-mode)
 
 ;; company-mode 与  fci-mode 冲突解决
 (defvar-local company-fci-mode-on-p nil)

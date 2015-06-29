@@ -24,6 +24,7 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-p r") 'helm-projectile-find-file)
 (global-set-key (kbd "M-p m") 'helm-semantic-or-imenu)
+(global-set-key (kbd "M-p s") 'imenu-list)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-s") 'helm-occur)
 (global-set-key (kbd "M-X") 'smex)
