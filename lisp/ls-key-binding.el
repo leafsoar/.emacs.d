@@ -30,8 +30,8 @@
 (global-set-key (kbd "M-X") 'smex)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(global-set-key (kbd "M-p c") 'flycheck-mode)
 
-(setq helm-M-x-fuzzy-match t)
 
 ;; 快速跳转
 (global-set-key [(control ?\.)] 'ska-point-to-register)

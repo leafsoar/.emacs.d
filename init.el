@@ -73,6 +73,9 @@
 (require 'ls-org-mode)
 (require 'ls-code)
 
+(add-to-list 'load-path (expand-file-name "olisp" user-emacs-directory))
+(require 'unicad)
+
 (winner-mode t)
 
 ;; dired 定时自动关闭
@@ -84,14 +87,17 @@
                  (unless (equal buf (current-buffer))
                    (message "killed #<buffer %s> automatically." (buffer-name buf))
                    (kill-buffer buf))) buffer))
+
 (define-key dired-mode-map (kbd "^")
   (lambda () (interactive)
     (delete-buffer-after-timeout (current-buffer) 5)
     (find-file "..")))
-(define-key dired-mode-map (kbd "q")
-  (lambda () (interactive)
-    (delete-buffer-after-timeout (current-buffer) 5)
-    (quit-window)))
+
+;; (global-set-key (kbd "M-p c") 'flycheck-mode)
+;; (define-key dired-mode-map (kbd "q")
+;;   (lambda () (interactive)
+;;     (delete-buffer-after-timeout (current-buffer) 5)
+;;     (quit-window)))
 
 (message "leafsoar ~")
 

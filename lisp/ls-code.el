@@ -46,6 +46,8 @@
 (require 'company-files)
 (setq company-backends '((company-capf company-dabbrev-code company-files)))
 
+(setenv "GOPATH" (shell-command-to-string "source $HOME/.leafsoarc && printf $GOPATH"))
+
 ;; lua 配置
 ;; (require 'etags)
 ;; (require 'company-etags)
