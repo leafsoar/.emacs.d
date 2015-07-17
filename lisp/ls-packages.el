@@ -35,6 +35,7 @@
 (undo-tree-mode)
 (projectile-global-mode)
 (window-numbering-mode)
+(setq projectile-enable-caching t)
 
 ;; highlight
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
@@ -81,12 +82,47 @@
 (setq speedbar-use-images nil)
 (setq speedbar-show-unknown-files t)
 
+;; yasnippet
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/snippets")
+
 ;; (global-set-key [f6] 'sr-speedbar-toggle)
 ;; (global-set-key (kbd "C-<f6>") 'sr-speedbar-refresh-toggle)
 ;; (global-set-key (kbd "M-<f6>") 'speedbar-up-directory)
 
 ;;;; powerline (minibuffer 上方的条 窗口样式)
 ;; (powerline-center-theme)
+
+;; (eval-after-load 'magit
+;;   '(progn
+;;      (set-face-foreground 'magit-diff-add "green3")
+;;      (set-face-foreground 'magit-diff-del "red3")
+;;      (set-face-foreground 'magit-diff-file-header "yellow")
+;;      ;; (set-face-foreground 'magit-diff-file-header "yello3")	 	 
+;;      (unless window-system
+;;        (set-face-background 'magit-item-highlight "black"))))
+
+
+;; ;; 整体背景色
+;; (set-face-background 'magit-item-highlight "gray25")
+;; ;; 头背景色
+;; (set-face-background 'diff-file-header "navy")
+;; (set-face-foreground 'magit-diff-file-header "deep sky blue")
+;; ;; 默认内容颜色
+;; (set-face-foreground 'diff-context "#6666ff")
+;; ;; 删除和添加
+;; (set-face-foreground 'magit-diff-del "violet")
+;; (set-face-foreground 'magit-diff-add "SpringGreen2")
+
+;; todo:
+;; diff-added-face      diff-changed-face
+;; diff-context-face    diff-file-header-face
+;; diff-function-face   diff-header-face
+;; diff-hunk-header-face        diff-index-face
+;; diff-indicator-added-face    diff-indicator-changed-face
+;; diff-indicator-removed-face  diff-nonexistent-face
+;; diff-removed-face
 
 
 (provide 'ls-packages)

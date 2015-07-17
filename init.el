@@ -75,8 +75,8 @@
 (require 'ls-code)
 
 
-(add-to-list 'load-path (expand-file-name "olisp" user-emacs-directory))
-(require 'unicad)
+;; (add-to-list 'load-path (expand-file-name "olisp" user-emacs-directory))
+;; (require 'unicad)
 
 (winner-mode t)
 

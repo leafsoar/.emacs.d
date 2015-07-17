@@ -31,11 +31,21 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (global-set-key (kbd "M-p c") 'flycheck-mode)
+(global-set-key (kbd "C-x g") 'magit-status)
 
+(global-set-key (kbd "M-p g") 'projectile-grep)
 
 ;; 快速跳转
 (global-set-key [(control ?\.)] 'ska-point-to-register)
 (global-set-key [(control ?\,)] 'ska-jump-to-register)
+
+;; (defun lua-setup-keymap ()
+;; 	 (define-key lua-mode-map ":" '))
+
+
+;; (add-hook 'lua-mode-hook
+;; 		  (lambda ()
+;; 			(global-set-key ":" ":")))
 
 ;; 简单的快速跳转
 (defun ska-point-to-register()
