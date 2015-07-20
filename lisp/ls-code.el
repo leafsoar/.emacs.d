@@ -43,6 +43,16 @@
 		  (lambda ()
 			(set (make-local-variable 'company-backends) '(company-dabbrev-code))))
 
+;; (add-hook 'c++-mode-hook
+		  ;; (lambda ()
+			;; (set (make-local-variable 'company-backends) '(company-etags))))
+;; (add-to-list 'company-backends 'company-c-headers)
+;; (setq company-c-headers-path-user
+;; 	  (quote
+;; 	   ("/Users/leafsoar/Cocos/cocos2d-x-3.6/cocos/")))
+
+		  
+
 (require 'company-files)
 (setq company-backends '((company-capf company-dabbrev-code company-files)))
 
