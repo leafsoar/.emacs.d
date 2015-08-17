@@ -43,20 +43,41 @@
 		  (lambda ()
 			(set (make-local-variable 'company-backends) '(company-dabbrev-code))))
 
-;; (add-hook 'c++-mode-hook
-		  ;; (lambda ()
-			;; (set (make-local-variable 'company-backends) '(company-etags))))
-;; (add-to-list 'company-backends 'company-c-headers)
+(add-hook 'c++-mode-hook
+		  (lambda ()
+			(set (make-local-variable 'company-backends) '(company-clang))))
+
+(add-to-list 'company-backends 'company-c-headers)
 ;; (setq company-c-headers-path-user
 ;; 	  (quote
-;; 	   ("/Users/leafsoar/Cocos/cocos2d-x-3.6/cocos/")))
-
+;; 	   ("/Users/leafsoar/Cocos/cocos2d-x-3.6/cocos/base/")))
+(setq company-clang-arguments '("-I~/Cocos/cocos2d-x-3.6/cocos/base/"))
 		  
 
 (require 'company-files)
 (setq company-backends '((company-capf company-dabbrev-code company-files)))
 
-(setenv "GOPATH" (shell-command-to-string "source $HOME/.leafsoarc && printf $GOPATH"))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOROOT")
+  (exec-path-from-shell-copy-env "GOPATH"))
+
+
+;; (add-to-list 'load-path "/home/you/somewhere/emacs/")
+;; (require 'go-mode-load)
+
+(defun go ()
+    "run current buffer"
+    (interactive)
+    (compile (concat "go run " (buffer-file-name))))
+
+(add-hook
+'go-mode-hook
+'(lambda ()
+   (local-set-key (kbd "M-p p") 'go)
+   (setq gofmt-command "goimports")
+   (add-hook 'before-save-hook 'gofmt-before-save)
+   ))
 
 ;; lua 配置
 ;; (require 'etags)
@@ -78,6 +99,9 @@
 ;;;; projectile
 (add-hook 'lua-mode-hook 'projectile-global-mode)
 (setq projectile-enable-caching t)
+
+(global-set-key [triple-wheel-right] 'next-buffer)
+(global-set-key [triple-wheel-left] 'previous-buffer)
 
 ;; ;; scroll 设置
 ;; (global-set-key [wheel-left] 'scroll-right-1)                                   

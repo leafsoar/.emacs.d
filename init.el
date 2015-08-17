@@ -96,10 +96,10 @@
     (find-file "..")))
 
 ;; (global-set-key (kbd "M-p c") 'flycheck-mode)
-;; (define-key dired-mode-map (kbd "q")
-;;   (lambda () (interactive)
-;;     (delete-buffer-after-timeout (current-buffer) 5)
-;;     (quit-window)))
+(define-key dired-mode-map (kbd "q")
+  (lambda () (interactive)
+    (delete-buffer-after-timeout (current-buffer) 5)
+    (quit-window)))
 
 (message "leafsoar ~")
 
