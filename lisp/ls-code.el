@@ -33,6 +33,8 @@
 (setq company-echo-delay 0)                          ; remove annoying blinking
 (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
 ;; golang 配置
 (require 'company-go)
 (add-hook 'go-mode-hook
@@ -46,6 +48,17 @@
 (add-hook 'c++-mode-hook
 		  (lambda ()
 			(set (make-local-variable 'company-backends) '(company-clang))))
+
+(add-hook 'js2-mode-hook
+		  (lambda ()
+			(set (make-local-variable 'company-backends) '(company-capf) '(company-files) '(company-dabbrev-code))))
+
+(add-hook
+ 'js2-mode-hook
+ '(lambda ()
+	(js2-imenu-extras-mode)
+	))
+
 
 (add-to-list 'company-backends 'company-c-headers)
 ;; (setq company-c-headers-path-user
@@ -66,18 +79,30 @@
 ;; (add-to-list 'load-path "/home/you/somewhere/emacs/")
 ;; (require 'go-mode-load)
 
+;; (defun go ()
+;;     "run current buffer"
+;;     (interactive)
+;;     (compile (concat "go run " (buffer-file-name))))
+
 (defun go ()
     "run current buffer"
     (interactive)
-    (compile (concat "go run " (buffer-file-name))))
+    (compile "go build -o run && ./run "))
+
+(defun go-test ()
+    "run current buffer"
+    (interactive)
+    (compile "go test"))
 
 (add-hook
-'go-mode-hook
-'(lambda ()
-   (local-set-key (kbd "M-p p") 'go)
-   (setq gofmt-command "goimports")
-   (add-hook 'before-save-hook 'gofmt-before-save)
-   ))
+ 'go-mode-hook
+ '(lambda ()
+	(local-set-key (kbd "M-p p") 'go)
+	(local-set-key (kbd "M-p t") 'go-test)
+	;; (local-set-key (kbd "M-p d") 'godef-jump)
+	(setq gofmt-command "goimports")
+	(add-hook 'before-save-hook 'gofmt-before-save)
+	))
 
 ;; lua 配置
 ;; (require 'etags)

@@ -15,6 +15,11 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+(defun ls-td()
+  (interactive)
+  (find-file "~/.emacs.d/td.org"))
+
+
 (setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -75,8 +80,9 @@
 (require 'ls-code)
 
 
-;; (add-to-list 'load-path (expand-file-name "olisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "olisp" user-emacs-directory))
 ;; (require 'unicad)
+(require 'go-rename)
 
 (winner-mode t)
 
