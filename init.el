@@ -107,6 +107,18 @@
     (delete-buffer-after-timeout (current-buffer) 5)
     (quit-window)))
 
+;; compilation 有色
+(require 'ansi-color)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(defun colorize-compilation-buffer ()
+  (interactive)
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
 (message "leafsoar ~")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
